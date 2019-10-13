@@ -1,8 +1,8 @@
 defmodule LincolnApiWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :lincoln_api
-
+  plug Corsica, max_age: 600, origins: "*", expose_headers: ~w(X-Foo),  allow_headers: ["content-type"]
   socket "/socket", LincolnApiWeb.UserSocket,
-    websocket: true,
+    websocket: [timeout: 45_000],
     longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.
