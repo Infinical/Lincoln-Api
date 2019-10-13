@@ -7,5 +7,8 @@ defmodule LincolnApiWeb.Router do
 
   scope "/api", LincolnApiWeb do
     pipe_through :api
+    resources "/projects", ProjectController
+
+
   end
 end
