@@ -1,6 +1,6 @@
 defmodule LincolnApiWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :lincoln_api
-  plug Corsica, max_age: 600, origins: "*", expose_headers: ~w(X-Foo)
+  plug Corsica, max_age: 600, origins: "*", expose_headers: ~w(X-Foo),  allow_headers: ["content-type"]
   socket "/socket", LincolnApiWeb.UserSocket,
     websocket: [timeout: 45_000],
     longpoll: false
