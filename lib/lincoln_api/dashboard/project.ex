@@ -18,5 +18,6 @@ defmodule LincolnApi.Dashboard.Project do
     project
     |> cast(attrs, [:name, :image, :description, :start_date, :end_date, :attachment])
     |> validate_required([:name, :image, :description, :start_date, :end_date, :attachment])
+   
   end
 end
