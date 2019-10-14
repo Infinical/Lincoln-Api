@@ -2,7 +2,7 @@ defmodule LincolnApiWeb.Router do
   use LincolnApiWeb, :router
 
   pipeline :api do
-    plug CORSPlug, origin: "*"
+    plug Corsica, origins: "*"
     plug :accepts, ["json"]
   end
 
