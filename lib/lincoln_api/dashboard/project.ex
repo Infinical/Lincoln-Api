@@ -5,10 +5,10 @@ defmodule LincolnApi.Dashboard.Project do
   schema "projects" do
     field :attachment, :string
     field :description, :string
-    field :end_date, :date
+    field :end_date, :string
     field :image, :string
     field :name, :string
-    field :start_date, :date
+    field :start_date, :string
 
     timestamps()
   end
@@ -17,7 +17,7 @@ defmodule LincolnApi.Dashboard.Project do
   def changeset(project, attrs) do
     project
     |> cast(attrs, [:name, :image, :description, :start_date, :end_date, :attachment])
-    |> validate_required([:name, :image, :description, :start_date, :end_date, :attachment])
+    |> validate_required([:name, :image, :description, :start_date, :end_date])
    
   end
 end
