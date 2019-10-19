@@ -42,7 +42,8 @@ defmodule LincolnApi.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:corsica, "~> 1.1"},
-      {:pow, "~> 1.0.13"}
+      {:pow, "~> 1.0.13"},
+      {:sendgrid, "~> 2.0.0"}
     ]
   end
 

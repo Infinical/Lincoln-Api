@@ -26,6 +26,11 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+
+ # Compile-time configured key.
+config :sendgrid,
+  api_key: "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"
+
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 

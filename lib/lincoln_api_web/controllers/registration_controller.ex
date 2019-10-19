@@ -12,6 +12,11 @@ defmodule LincolnApiWeb.API.V1.RegistrationController do
       |> case do
         {:ok, _user, conn} ->
           json(conn, %{data: %{token: conn.private[:api_auth_token], renew_token: conn.private[:api_renew_token]}})
+          SendGrid.Email.build()
+          |> SendGrid.Email.add_to("inficalvin@gmail.com")
+          |> SendGrid.Email.put_from("test2@email.com")
+          |> SendGrid.Email.put_template("d-838aa6b683a845359bf447ed09f8d96c")
+          |> SendGrid.Mail.send() 
   
         {:error, changeset, conn} ->
           errors = Changeset.traverse_errors(changeset, &ErrorHelpers.translate_error/1)
