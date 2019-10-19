@@ -40,5 +40,7 @@ defmodule LincolnApiWeb.Endpoint do
     key: "_lincoln_api_key",
     signing_salt: "a5gRbhEv"
 
+  plug Pow.Plug.Session, otp_app: :lincoln_api
+
   plug LincolnApiWeb.Router
 end

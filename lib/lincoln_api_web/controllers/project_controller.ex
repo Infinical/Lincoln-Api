@@ -3,6 +3,7 @@ defmodule LincolnApiWeb.API.V1.ProjectController do
 
   alias LincolnApi.Dashboard
   alias LincolnApi.Dashboard.Project
+  alias LincolnApiWeb.ApiAuthPlug
 
   action_fallback LincolnApiWeb.FallbackController
 
@@ -15,7 +16,7 @@ defmodule LincolnApiWeb.API.V1.ProjectController do
     with {:ok, %Project{} = project} <- Dashboard.create_project(project_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", Routes.project_path(conn, :show, project))
+      |> put_resp_header("location", Routes.api_v1_project_path(conn, :show, project))
       |> render("show.json", project: project)
     end
   end

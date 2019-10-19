@@ -3,8 +3,7 @@ defmodule LincolnApiWeb.Router do
  
 
   pipeline :protected do
-    plug Pow.Plug.RequireAuthenticated,
-      error_handler: Pow.Phoenix.PlugErrorHandler
+    plug Pow.Plug.RequireAuthenticated,error_handler: LincolnApiWeb.ApiAuthErrorHandler
   end
 
   pipeline :api do
