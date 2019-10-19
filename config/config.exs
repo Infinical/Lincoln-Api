@@ -10,6 +10,10 @@ use Mix.Config
 config :lincoln_api,
   ecto_repos: [LincolnApi.Repo]
 
+config :lincoln_api, :pow,
+  user: LincolnApi.Users.User,
+  repo: LincolnApi.Repo
+
 # Configures the endpoint
 config :lincoln_api, LincolnApiWeb.Endpoint,
   url: [host: "localhost"],
