@@ -1,4 +1,4 @@
-defmodule LincolnApiWeb.ProjectController do
+defmodule LincolnApiWeb.API.V1.ProjectController do
   use LincolnApiWeb, :controller
 
   alias LincolnApi.Dashboard
