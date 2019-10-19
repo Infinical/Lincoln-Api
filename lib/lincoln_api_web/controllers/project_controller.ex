@@ -15,7 +15,7 @@ defmodule LincolnApiWeb.API.V1.ProjectController do
   def create(conn, %{"project" => project_params}) do
     with {:ok, %Project{} = project} <- Dashboard.create_project(project_params) do
       conn
-      |> put_status(:created)
+      # |> put_status(:created)
       |> put_resp_header("location", Routes.api_v1_project_path(conn, :show, project))
       |> render("show.json", project: project)
     end

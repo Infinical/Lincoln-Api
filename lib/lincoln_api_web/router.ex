@@ -7,7 +7,7 @@ defmodule LincolnApiWeb.Router do
   end
 
   pipeline :api do
-    plug Corsica, origins: "*"
+    plug CORSPlug, origin: "*"
     plug :accepts, ["json"]
     plug LincolnApiWeb.ApiAuthPlug, otp_app: :lincoln_api
   end
