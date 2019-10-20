@@ -7,7 +7,7 @@ defmodule LincolnApiWeb.API.V1.ProjectView do
   end
 
   def render("show.json", %{project: project}) do
-    %{data: render_one(project, ProjectView, "project.json")}
+    %{message: "Project Updated Successfully",data: render_one(project, ProjectView, "project.json")}
   end
 
   def render("project.json", %{project: project}) do

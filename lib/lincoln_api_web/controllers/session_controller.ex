@@ -39,6 +39,6 @@ defmodule LincolnApiWeb.API.V1.SessionController do
     def delete(conn, _params) do
       {:ok, conn} = Pow.Plug.clear_authenticated_user(conn)
   
-      json(conn, %{data: %{}})
+      json(conn, %{data: %{message: "User Log Out Successful"}})
     end
   end
