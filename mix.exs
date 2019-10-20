@@ -44,7 +44,8 @@ defmodule LincolnApi.MixProject do
       {:corsica, "~> 1.1"},
       {:pow, "~> 1.0.13"},
       {:sendgrid, "~> 2.0.0"},
-      {:cors_plug, "~> 2.0"}
+      {:cors_plug, "~> 2.0"},
+      {:poison, "~> 3.1"}
     ]
   end
 

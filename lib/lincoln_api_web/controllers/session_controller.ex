@@ -34,6 +34,12 @@ defmodule LincolnApiWeb.API.V1.SessionController do
           json(conn, %{data: %{token: conn.private[:api_auth_token], renew_token: conn.private[:api_renew_token]}})
       end
     end
+
+    def show(conn,_params) do
+      conn
+      |> Pow.Plug.current_user()
+      |> IO.inspect()
+    end
   
     @spec delete(Conn.t(), map()) :: Conn.t()
     def delete(conn, _params) do

@@ -16,7 +16,7 @@ defmodule LincolnApiWeb.Router do
     pipe_through :api
 
     resources "/registration", RegistrationController, singleton: true, only: [:create]
-    resources "/session", SessionController, singleton: true, only: [:create, :delete]
+    resources "/session", SessionController, singleton: true, only: [:create, :delete, :show]
     post "/session/renew", SessionController, :renew
   end
 
