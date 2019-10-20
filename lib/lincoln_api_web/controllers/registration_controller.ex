@@ -11,7 +11,7 @@ defmodule LincolnApiWeb.API.V1.RegistrationController do
       |> Pow.Plug.create_user(user_params)
       |> case do
         {:ok, _user, conn} ->
-          json(conn, %{data: %{token: conn.private[:api_auth_token], renew_token: conn.private[:api_renew_token]}})
+          json(conn, %{status: 200, message: "Account created successfully",data: %{token: conn.private[:api_auth_token], renew_token: conn.private[:api_renew_token]}})
           SendGrid.Email.build()
           |> SendGrid.Email.add_to("inficalvin@gmail.com")
           |> SendGrid.Email.put_from("test2@email.com")
@@ -23,7 +23,7 @@ defmodule LincolnApiWeb.API.V1.RegistrationController do
   
           conn
           |> put_status(500)
-          |> json(%{error: %{status: 500, message: "Couldn't create user", errors: errors}})
+          |> json(%{status: 500, message: "Couldn't create user",error: %{ errors: errors}})
       end
     end
   end

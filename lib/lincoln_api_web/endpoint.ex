@@ -1,6 +1,7 @@
 defmodule LincolnApiWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :lincoln_api
-  plug Corsica, max_age: 600, origins: "*", expose_headers: ~w(X-Foo),  allow_headers: ["content-type"]
+  # plug Corsica, origins: ["*"], expose_headers: ~w(X-Foo),log: [rejected: :error, invalid: :warn, accepted: :debug],allow_headers: ["content-type"],allow_credentials: true
+
   socket "/socket", LincolnApiWeb.UserSocket,
     websocket: [timeout: 45_000],
     longpoll: false
@@ -39,6 +40,9 @@ defmodule LincolnApiWeb.Endpoint do
     store: :cookie,
     key: "_lincoln_api_key",
     signing_salt: "a5gRbhEv"
+
+  plug Pow.Plug.Session, otp_app: :lincoln_api
+  plug CORSPlug
 
   plug LincolnApiWeb.Router
 end

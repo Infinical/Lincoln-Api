@@ -3,12 +3,11 @@ defmodule LincolnApiWeb.Router do
  
 
   pipeline :protected do
-    plug Pow.Plug.RequireAuthenticated,
-      error_handler: Pow.Phoenix.PlugErrorHandler
+    plug Pow.Plug.RequireAuthenticated,error_handler: LincolnApiWeb.ApiAuthErrorHandler
   end
 
   pipeline :api do
-    plug Corsica, origins: "*"
+    plug CORSPlug, origin: "*"
     plug :accepts, ["json"]
     plug LincolnApiWeb.ApiAuthPlug, otp_app: :lincoln_api
   end
@@ -17,7 +16,7 @@ defmodule LincolnApiWeb.Router do
     pipe_through :api
 
     resources "/registration", RegistrationController, singleton: true, only: [:create]
-    resources "/session", SessionController, singleton: true, only: [:create, :delete]
+    resources "/session", SessionController, singleton: true, only: [:create, :delete, :show]
     post "/session/renew", SessionController, :renew
   end
 
