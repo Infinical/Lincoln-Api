@@ -2,6 +2,19 @@ defmodule LincolnApiWeb.Router do
   use LincolnApiWeb, :router
  
 
+  pipeline :admin do
+    plug LincolnApiWeb.Plugs.EnsureRolePlug, :administrator
+  end
+
+  pipeline :sup do
+    plug LincolnApiWeb.Plugs.EnsureRolePlug, :supervisor
+  end
+
+  pipeline :ambassador do
+    plug LincolnApiWeb.Plugs.EnsureRolePlug, :supervisor
+  end
+
+  
   pipeline :protected do
     plug Pow.Plug.RequireAuthenticated,error_handler: LincolnApiWeb.ApiAuthErrorHandler
   end
@@ -21,8 +34,8 @@ defmodule LincolnApiWeb.Router do
   end
 
   scope "/api/v1", LincolnApiWeb.API.V1, as: :api_v1 do
-    pipe_through [:api,:protected]
-    resources "/projects", ProjectController
+    pipe_through [:api,:protected,:ambassador]
+    resources "/projects", ProjectController , only: [:create]
     
     
   end
