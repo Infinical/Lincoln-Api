@@ -4,11 +4,11 @@ defmodule LincolnApi.Repo.Migrations.CreateProjects do
   def change do
     create table(:projects) do
       add :name, :string
-      add :image, :string
       add :description, :text
-      add :start_date, :date
-      add :end_date, :date
+      add :start_date, :string
+      add :end_date, :string
       add :attachment, :string
+      add :user_id, references(:users)
 
       timestamps()
     end

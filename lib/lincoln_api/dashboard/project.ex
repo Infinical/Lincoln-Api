@@ -6,9 +6,9 @@ defmodule LincolnApi.Dashboard.Project do
     field :attachment, :string
     field :description, :string
     field :end_date, :string
-    field :image, :string
     field :name, :string
     field :start_date, :string
+    belongs_to :user, LincolnApi.Users.User
 
     timestamps()
   end
@@ -16,8 +16,8 @@ defmodule LincolnApi.Dashboard.Project do
   @doc false
   def changeset(project, attrs) do
     project
-    |> cast(attrs, [:name, :image, :description, :start_date, :end_date, :attachment])
-    |> validate_required([:name, :image, :description, :start_date, :end_date])
+    |> cast(attrs, [:name, :description, :start_date, :end_date, :attachment,:user_id])
+    |> validate_required([:name, :description, :start_date, :end_date, :user_id])
    
   end
 end
