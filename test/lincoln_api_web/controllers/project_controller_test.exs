@@ -8,7 +8,7 @@ defmodule LincolnApiWeb.ProjectControllerTest do
     attachment: "some attachment",
     description: "some description",
     end_date: ~D[2010-04-17],
-    image: "some image",
+   
     name: "some name",
     start_date: ~D[2010-04-17]
   }
@@ -16,11 +16,10 @@ defmodule LincolnApiWeb.ProjectControllerTest do
     attachment: "some updated attachment",
     description: "some updated description",
     end_date: ~D[2011-05-18],
-    image: "some updated image",
     name: "some updated name",
     start_date: ~D[2011-05-18]
   }
-  @invalid_attrs %{attachment: nil, description: nil, end_date: nil, image: nil, name: nil, start_date: nil}
+  @invalid_attrs %{attachment: nil, description: nil, end_date: nil,  : nil, name: nil, start_date: nil}
 
   def fixture(:project) do
     {:ok, project} = Dashboard.create_project(@create_attrs)
@@ -50,7 +49,6 @@ defmodule LincolnApiWeb.ProjectControllerTest do
                "attachment" => "some attachment",
                "description" => "some description",
                "end_date" => "2010-04-17",
-               "image" => "some image",
                "name" => "some name",
                "start_date" => "2010-04-17"
              } = json_response(conn, 200)["data"]
@@ -76,7 +74,6 @@ defmodule LincolnApiWeb.ProjectControllerTest do
                "attachment" => "some updated attachment",
                "description" => "some updated description",
                "end_date" => "2011-05-18",
-               "image" => "some updated image",
                "name" => "some updated name",
                "start_date" => "2011-05-18"
              } = json_response(conn, 200)["data"]

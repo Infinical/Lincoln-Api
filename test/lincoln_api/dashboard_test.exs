@@ -6,9 +6,9 @@ defmodule LincolnApi.DashboardTest do
   describe "projects" do
     alias LincolnApi.Dashboard.Project
 
-    @valid_attrs %{attachment: "some attachment", description: "some description", end_date: ~D[2010-04-17], image: "some image", name: "some name", start_date: ~D[2010-04-17]}
-    @update_attrs %{attachment: "some updated attachment", description: "some updated description", end_date: ~D[2011-05-18], image: "some updated image", name: "some updated name", start_date: ~D[2011-05-18]}
-    @invalid_attrs %{attachment: nil, description: nil, end_date: nil, image: nil, name: nil, start_date: nil}
+    @valid_attrs %{attachment: "some attachment", description: "some description", end_date: ~D[2010-04-17], name: "some name", start_date: ~D[2010-04-17]}
+    @update_attrs %{attachment: "some updated attachment", description: "some updated description", end_date: ~D[2011-05-18],name: "some updated name", start_date: ~D[2011-05-18]}
+    @invalid_attrs %{attachment: nil, description: nil, end_date: nil,, name: nil, start_date: nil}
 
     def project_fixture(attrs \\ %{}) do
       {:ok, project} =
@@ -34,7 +34,6 @@ defmodule LincolnApi.DashboardTest do
       assert project.attachment == "some attachment"
       assert project.description == "some description"
       assert project.end_date == ~D[2010-04-17]
-      assert project.image == "some image"
       assert project.name == "some name"
       assert project.start_date == ~D[2010-04-17]
     end
@@ -49,7 +48,6 @@ defmodule LincolnApi.DashboardTest do
       assert project.attachment == "some updated attachment"
       assert project.description == "some updated description"
       assert project.end_date == ~D[2011-05-18]
-      assert project.image == "some updated image"
       assert project.name == "some updated name"
       assert project.start_date == ~D[2011-05-18]
     end

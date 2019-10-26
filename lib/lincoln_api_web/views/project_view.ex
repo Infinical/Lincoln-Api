@@ -13,7 +13,6 @@ defmodule LincolnApiWeb.API.V1.ProjectView do
   def render("project.json", %{project: project}) do
     %{id: project.id,
       name: project.name,
-      image: project.image,
       description: project.description,
       start_date: project.start_date,
       end_date: project.end_date,
