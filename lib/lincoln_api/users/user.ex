@@ -2,7 +2,7 @@ defmodule LincolnApi.Users.User do
   use Ecto.Schema
   use Pow.Ecto.Schema
 
-  @derive {Jason.Encoder, only: [:email, :username, :role]}
+  @derive {Jason.Encoder, only: [:email, :username, :role, :id]}
   schema "users" do
     field :username, :string
     field :role, :string, default: "ambassador"

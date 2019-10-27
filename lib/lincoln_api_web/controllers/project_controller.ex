@@ -41,4 +41,9 @@ defmodule LincolnApiWeb.API.V1.ProjectController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def list_by_id(conn, %{"id" => id}) do
+    projects = Dashboard.list_by_user_id(id)
+    render(conn, "index.json", projects: projects)
+  end
 end

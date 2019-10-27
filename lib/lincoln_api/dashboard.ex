@@ -21,6 +21,11 @@ defmodule LincolnApi.Dashboard do
     Repo.all(Project)
   end
 
+  def list_by_user_id(id) do
+    query = from(p in Project, where: p.user_id == ^id)
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single project.
 
