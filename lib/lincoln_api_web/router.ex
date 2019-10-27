@@ -33,7 +33,13 @@ defmodule LincolnApiWeb.Router do
 
   scope "/api/v1", LincolnApiWeb.API.V1, as: :api_v1 do
     pipe_through [:api, :protected, :ambassador]
-    resources "/projects", ProjectController, only: [:create, :show, :update, :index]
+    resources "/projects", ProjectController, only: [:create, :show, :update]
     post "/my_projects", ProjectController, :list_by_id
+  end
+
+  scope "/api/v1", LincolnApiWeb.API.V1, as: :api_v1 do
+    pipe_through [:api, :protected, :admin]
+    resources "/projects", ProjectController, only: [:show, :index]
+    get "/users", SessionController, :list_users
   end
 end
