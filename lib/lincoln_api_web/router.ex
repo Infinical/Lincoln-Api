@@ -1,5 +1,6 @@
 defmodule LincolnApiWeb.Router do
   use LincolnApiWeb, :router
+  use Pow.Extension.Phoenix.Router, otp_app: :lincoln_api
 
   pipeline :admin do
     plug LincolnApiWeb.Plugs.EnsureRolePlug, :administrator
@@ -28,6 +29,7 @@ defmodule LincolnApiWeb.Router do
 
     resources "/registration", RegistrationController, singleton: true, only: [:create]
     resources "/session", SessionController, singleton: true, only: [:create, :delete, :show]
+    resources "invite", InvitationController, singleton: true, only: [:create]
     post "/session/renew", SessionController, :renew
   end
 

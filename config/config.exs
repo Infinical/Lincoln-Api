@@ -12,7 +12,9 @@ config :lincoln_api,
 
 config :lincoln_api, :pow,
   user: LincolnApi.Users.User,
-  repo: LincolnApi.Repo
+  repo: LincolnApi.Repo,
+  extensions: [PowInvitation],
+  controller_callbacks: Pow.Extension.Phoenix.ControllerCallbacks
 
 # Configures the endpoint
 config :lincoln_api, LincolnApiWeb.Endpoint,
@@ -26,10 +28,7 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-
- # Compile-time configured key.
-config :sendgrid,
-  api_key: "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"
+# Compile-time configured key.
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
