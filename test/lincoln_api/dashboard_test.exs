@@ -69,4 +69,69 @@ defmodule LincolnApi.DashboardTest do
       assert %Ecto.Changeset{} = Dashboard.change_project(project)
     end
   end
+
+  describe "recommendations" do
+    alias LincolnApi.Dashboard.Recommendations
+
+    @valid_attrs %{attachment: "some attachment", end_date: "some end_date", rate: "some rate", start_date: "some start_date"}
+    @update_attrs %{attachment: "some updated attachment", end_date: "some updated end_date", rate: "some updated rate", start_date: "some updated start_date"}
+    @invalid_attrs %{attachment: nil, end_date: nil, rate: nil, start_date: nil}
+
+    def recommendations_fixture(attrs \\ %{}) do
+      {:ok, recommendations} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Dashboard.create_recommendations()
+
+      recommendations
+    end
+
+    test "list_recommendations/0 returns all recommendations" do
+      recommendations = recommendations_fixture()
+      assert Dashboard.list_recommendations() == [recommendations]
+    end
+
+    test "get_recommendations!/1 returns the recommendations with given id" do
+      recommendations = recommendations_fixture()
+      assert Dashboard.get_recommendations!(recommendations.id) == recommendations
+    end
+
+    test "create_recommendations/1 with valid data creates a recommendations" do
+      assert {:ok, %Recommendations{} = recommendations} = Dashboard.create_recommendations(@valid_attrs)
+      assert recommendations.attachment == "some attachment"
+      assert recommendations.end_date == "some end_date"
+      assert recommendations.rate == "some rate"
+      assert recommendations.start_date == "some start_date"
+    end
+
+    test "create_recommendations/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Dashboard.create_recommendations(@invalid_attrs)
+    end
+
+    test "update_recommendations/2 with valid data updates the recommendations" do
+      recommendations = recommendations_fixture()
+      assert {:ok, %Recommendations{} = recommendations} = Dashboard.update_recommendations(recommendations, @update_attrs)
+      assert recommendations.attachment == "some updated attachment"
+      assert recommendations.end_date == "some updated end_date"
+      assert recommendations.rate == "some updated rate"
+      assert recommendations.start_date == "some updated start_date"
+    end
+
+    test "update_recommendations/2 with invalid data returns error changeset" do
+      recommendations = recommendations_fixture()
+      assert {:error, %Ecto.Changeset{}} = Dashboard.update_recommendations(recommendations, @invalid_attrs)
+      assert recommendations == Dashboard.get_recommendations!(recommendations.id)
+    end
+
+    test "delete_recommendations/1 deletes the recommendations" do
+      recommendations = recommendations_fixture()
+      assert {:ok, %Recommendations{}} = Dashboard.delete_recommendations(recommendations)
+      assert_raise Ecto.NoResultsError, fn -> Dashboard.get_recommendations!(recommendations.id) end
+    end
+
+    test "change_recommendations/1 returns a recommendations changeset" do
+      recommendations = recommendations_fixture()
+      assert %Ecto.Changeset{} = Dashboard.change_recommendations(recommendations)
+    end
+  end
 end

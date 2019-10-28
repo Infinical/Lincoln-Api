@@ -106,4 +106,100 @@ defmodule LincolnApi.Dashboard do
   def change_project(%Project{} = project) do
     Project.changeset(project, %{})
   end
+
+  alias LincolnApi.Dashboard.Recommendations
+
+  @doc """
+  Returns the list of recommendations.
+
+  ## Examples
+
+      iex> list_recommendations()
+      [%Recommendations{}, ...]
+
+  """
+  def list_recommendations do
+    Repo.all(Recommendations)
+  end
+
+  @doc """
+  Gets a single recommendations.
+
+  Raises `Ecto.NoResultsError` if the Recommendations does not exist.
+
+  ## Examples
+
+      iex> get_recommendations!(123)
+      %Recommendations{}
+
+      iex> get_recommendations!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_recommendations!(id), do: Repo.get!(Recommendations, id)
+
+  @doc """
+  Creates a recommendations.
+
+  ## Examples
+
+      iex> create_recommendations(%{field: value})
+      {:ok, %Recommendations{}}
+
+      iex> create_recommendations(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_recommendations(attrs \\ %{}) do
+    %Recommendations{}
+    |> Recommendations.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a recommendations.
+
+  ## Examples
+
+      iex> update_recommendations(recommendations, %{field: new_value})
+      {:ok, %Recommendations{}}
+
+      iex> update_recommendations(recommendations, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_recommendations(%Recommendations{} = recommendations, attrs) do
+    recommendations
+    |> Recommendations.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Recommendations.
+
+  ## Examples
+
+      iex> delete_recommendations(recommendations)
+      {:ok, %Recommendations{}}
+
+      iex> delete_recommendations(recommendations)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_recommendations(%Recommendations{} = recommendations) do
+    Repo.delete(recommendations)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking recommendations changes.
+
+  ## Examples
+
+      iex> change_recommendations(recommendations)
+      %Ecto.Changeset{source: %Recommendations{}}
+
+  """
+  def change_recommendations(%Recommendations{} = recommendations) do
+    Recommendations.changeset(recommendations, %{})
+  end
 end
