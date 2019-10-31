@@ -42,6 +42,7 @@ defmodule LincolnApiWeb.Router do
     pipe_through [:api, :protected, :sup]
     resources "/projects", ProjectController, only: [:show, :index]
     resources "/recommendations", RecommendationsController, except: [:new, :edit]
+    post "/sup_projects", ProjectController, :by_sup_id
   end
 
   scope "/api/v1", LincolnApiWeb.API.V1, as: :api_v1 do

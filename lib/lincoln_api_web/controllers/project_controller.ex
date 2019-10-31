@@ -47,4 +47,9 @@ defmodule LincolnApiWeb.API.V1.ProjectController do
     projects = Dashboard.list_by_user_id(id)
     render(conn, "index.json", projects: projects)
   end
+
+  def by_sup_id(conn, %{"id" => id}) do
+    projects = Dashboard.by_sup_id(id)
+    render(conn, "index.json", projects: projects)
+  end
 end
