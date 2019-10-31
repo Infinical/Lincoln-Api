@@ -15,4 +15,8 @@ defmodule LincolnApi.Accounts do
     query = from(m in User, where: m.role == "supervisor")
     Repo.all(query)
   end
+
+  def user_details!(id) do
+    Repo.get!(User, id)
+  end
 end

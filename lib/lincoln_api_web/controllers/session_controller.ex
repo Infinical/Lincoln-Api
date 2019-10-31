@@ -73,4 +73,9 @@ defmodule LincolnApiWeb.API.V1.SessionController do
     supervisors = Accounts.list_supervisors()
     render(conn, "index.json", users: supervisors)
   end
+
+  def user_details(conn, %{"id" => id}) do
+    user = Accounts.user_details!(id)
+    render(conn, "show.json", user: user)
+  end
 end
