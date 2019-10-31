@@ -2,6 +2,7 @@ defmodule LincolnApiWeb.API.V1.ProjectController do
   use LincolnApiWeb, :controller
 
   alias LincolnApi.Dashboard
+  alias LincolnApi.Accounts
   alias LincolnApi.Dashboard.Project
   alias LincolnApiWeb.ApiAuthPlug
 

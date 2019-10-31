@@ -10,4 +10,9 @@ defmodule LincolnApi.Accounts do
   def list_users do
     Repo.all(User)
   end
+
+  def list_supervisors do
+    query = from(m in User, where: m.role == "supervisor")
+    Repo.all(query)
+  end
 end
