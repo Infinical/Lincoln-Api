@@ -7,6 +7,7 @@ defmodule LincolnApi.Dashboard.Recommendations do
     field :end_date, :string
     field :rate, :string
     field :start_date, :string
+
     belongs_to :project, LincolnApi.Dashboard.Project
 
     timestamps()
