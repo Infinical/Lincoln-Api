@@ -10,8 +10,13 @@ defmodule LincolnApi.Repo.Migrations.CreateProjects do
       add :attachment, :string
       add :user_id, references(:users)
       add :supervisor_id, references(:users)
+      # add :recommendations_id, references(:recommendations)
 
       timestamps()
     end
+
+    create unique_index(:projects, [:user_id])
+    create unique_index(:projects, [:supervisor_id])
+    # create unique_index(:projects, [:recommendation_id])
   end
 end

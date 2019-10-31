@@ -11,5 +11,7 @@ defmodule LincolnApi.Repo.Migrations.CreateRecommendations do
 
       timestamps()
     end
+
+    create unique_index(:recommendations, [:project_id])
   end
 end

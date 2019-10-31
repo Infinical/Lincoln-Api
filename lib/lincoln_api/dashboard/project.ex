@@ -10,8 +10,7 @@ defmodule LincolnApi.Dashboard.Project do
     field :start_date, :string
     belongs_to :user, LincolnApi.Users.User
     belongs_to :supervisor, LincolnApi.Users.Supervisor
-    has_many :recommendations, LincolnApi.Dashboard.Recommendations
-
+    has_one :recommendation, LincolnApi.Dashboard.Recommendations
     timestamps()
   end
 
