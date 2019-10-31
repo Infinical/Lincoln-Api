@@ -9,6 +9,7 @@ defmodule LincolnApi.Dashboard.Project do
     field :name, :string
     field :start_date, :string
     belongs_to :user, LincolnApi.Users.User
+    belongs_to :supervisor, LincolnApi.Users.Supervisor
     has_many :recommendations, LincolnApi.Dashboard.Recommendations
 
     timestamps()
@@ -17,7 +18,15 @@ defmodule LincolnApi.Dashboard.Project do
   @doc false
   def changeset(project, attrs) do
     project
-    |> cast(attrs, [:name, :description, :start_date, :end_date, :attachment, :user_id])
+    |> cast(attrs, [
+      :name,
+      :description,
+      :start_date,
+      :end_date,
+      :attachment,
+      :user_id,
+      :supervisor_id
+    ])
     |> validate_required([:name, :description, :start_date, :end_date, :user_id])
   end
 end

@@ -2,6 +2,7 @@ defmodule LincolnApiWeb.API.V1.ProjectController do
   use LincolnApiWeb, :controller
 
   alias LincolnApi.Dashboard
+  alias LincolnApi.Accounts
   alias LincolnApi.Dashboard.Project
   alias LincolnApiWeb.ApiAuthPlug
 
@@ -44,6 +45,11 @@ defmodule LincolnApiWeb.API.V1.ProjectController do
 
   def list_by_id(conn, %{"id" => id}) do
     projects = Dashboard.list_by_user_id(id)
+    render(conn, "index.json", projects: projects)
+  end
+
+  def by_sup_id(conn, %{"id" => id}) do
+    projects = Dashboard.by_sup_id(id)
     render(conn, "index.json", projects: projects)
   end
 end

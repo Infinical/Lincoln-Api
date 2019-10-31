@@ -26,6 +26,11 @@ defmodule LincolnApi.Dashboard do
     Repo.all(query)
   end
 
+  def by_sup_id(id) do
+    query = from(p in Project, where: p.supervisor_id == ^id)
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single project.
 

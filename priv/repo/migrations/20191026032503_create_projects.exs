@@ -9,9 +9,9 @@ defmodule LincolnApi.Repo.Migrations.CreateProjects do
       add :end_date, :string
       add :attachment, :string
       add :user_id, references(:users)
+      add :supervisor_id, references(:users)
 
       timestamps()
     end
-
   end
 end
