@@ -17,6 +17,6 @@ defmodule LincolnApi.Dashboard.Recommendations do
   def changeset(recommendations, attrs) do
     recommendations
     |> cast(attrs, [:start_date, :end_date, :rate, :attachment, :project_id])
-    |> validate_required([:start_date, :end_date, :attachment, :project_id])
+    |> validate_required([:start_date, :end_date, :project_id])
   end
 end
