@@ -2,6 +2,9 @@ defmodule LincolnApi.Users.User do
   use Ecto.Schema
   use Pow.Ecto.Schema
 
+  use Pow.Extension.Ecto.Schema,
+    extensions: [PowInvitation]
+
   @derive {Jason.Encoder, only: [:email, :username, :role, :id]}
   schema "users" do
     field :username, :string
@@ -9,12 +12,13 @@ defmodule LincolnApi.Users.User do
     pow_user_fields()
     has_many :projects, LincolnApi.Dashboard.Project
 
-     timestamps()
+    timestamps()
   end
 
   def changeset(user_or_changeset, attrs) do
     user_or_changeset
     |> pow_changeset(attrs)
+    |> pow_extension_changeset(attrs)
     |> changeset_username(attrs)
     |> changeset_role(attrs)
   end
@@ -31,5 +35,5 @@ defmodule LincolnApi.Users.User do
     |> Ecto.Changeset.validate_inclusion(:role, ~w(ambassador supervisor administrator))
   end
 
-   
+  # //pow config
 end
